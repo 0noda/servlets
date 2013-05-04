@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import classs.changeText;
 
 /**
  *
@@ -38,25 +39,23 @@ public class txet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet txet</title>");            
+            out.println("<title>Servlet txet</title>"); 
+            out.println("<script>");
+            out.println("<document.detElementById('area2')");
+            out.println("</script>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet txet at " + request.getContextPath() + "</h1>");
-            setLayout(null);
-            int width = Integer.parseInt(getParameter(“width"));
-            int height = Integer.parseInt(getParameter("height"));
-            String val = "Хочешь быть великим - " + "стань им.\n" +
-                   "Только в начале\n" + "победи сам себя\n" +
-                   "и в первую очередь\n" + "свою лень.\n\n";
-            TextArea text = new TextArea(val, 80,40); add(text);
-            text.setBounds(0,0, width, height); 
+            String text = request.getParameter("a1");
+            text=change(text);
+            out.println(text);
             out.println("</body>");
             out.println("</html>");
         } finally {            
             out.close();
         }
+        
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
